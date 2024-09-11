@@ -71,7 +71,48 @@
 
         unset($a, $b, $c);
         echo '<hr>';
- 
+        //-------------------------------Ejercicio3---------------------------------
+        echo '<h2>Ejercicio 3</h2>';
+        echo    '<p>Muestra el contenido de cada variable inmediatamente después de cada asignación,<br>
+                    verificar la evolución del tipo de estas variables (imprime todos los componentes de los<br>
+                    arreglo):
+                </p>';
+
+        echo    '<p>
+                    $a = “PHP5”;
+                    <br>$z[] = &$a;
+                    <br>$b = “5a version de PHP”;
+                    <br>$c = $b*10;
+                    <br>$a .= $b;
+                    <br>$b *= $c;
+                    <br>$z[0] = “MySQL”;
+                </p>';
+
+
+        $a = "PHP5";
+        echo '<br>'.$a.'<br>';
+
+        $z[] = &$a;
+        echo $z[0].'<br>';
+
+        $b = "5a version de PHP";
+        echo $b.'<br>';
+
+        $c = $b*10;
+        echo $c.'<br>';
+
+        $a .= $b;
+        echo $a.'<br>';
+
+        $b *= $c;
+        echo $b.'<br>';
+
+        $z[0] = "MySQL";
+        echo $z[0].'<br>';
+
+        #unset($a, $b, $c, $z);
+        echo '<hr>';
+
     ?>
 
 </body>
