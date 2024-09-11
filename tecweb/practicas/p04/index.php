@@ -187,7 +187,18 @@
 
         unset($a, $b, $c, $d, $e, $f);
         echo '<hr>';
+        //-------------------------------Ejercicio7---------------------------------
+        echo '<h2>Ejercicio 7</h2>';
+        echo '<p>Usando la variable predefinida $_SERVER, determina lo siguiente:</p>';
 
+        echo '<p>a. La versión de Apache y PHP,</p>';
+        echo $_SERVER['SERVER_SOFTWARE'];
+        
+        echo '<p>b. El nombre del sistema operativo (servidor),</p>';
+        echo $_SERVER['SERVER_NAME'];
+
+        echo '<p>c. El idioma del navegador (cliente).</p>';
+        echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
     ?>
 
 </body>
