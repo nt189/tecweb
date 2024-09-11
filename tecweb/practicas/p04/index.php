@@ -112,6 +112,27 @@
 
         #unset($a, $b, $c, $z);
         echo '<hr>';
+        //-------------------------------Ejercicio4---------------------------------
+        echo '<h2>Ejercicio 4</h2>';
+        echo '<p>
+                Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de<br>
+                la matriz $GLOBALS o del modificador global de PHP.
+             </p>';
+             
+        function Ejercicio4(){
+            $var1 = $GLOBALS['a'];
+            $var2 = $GLOBALS['b'];
+            $var3 = $GLOBALS['c'];
+            $var4 = $GLOBALS['z'];
+
+            echo $var1.'<br>';
+            echo $var2.'<br>';
+            echo $var3.'<br>';
+            echo $var4[0].'<br>';
+        }
+        Ejercicio4();
+        unset($a, $b, $c, $z);
+        echo '<hr>';
 
     ?>
 
