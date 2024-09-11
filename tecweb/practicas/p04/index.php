@@ -31,7 +31,47 @@
         echo '</ul>';
 
         unset($_myvar, $_7var, $myvar, $var7, $_element1);
-        
+        echo '<hr>';
+        //-------------------------------Ejercicio2---------------------------------
+        echo '<h2>Ejercicio 2</h2>';
+        echo 'Proporcionar los valores de $a, $b, $c como sigue:<br>';
+        echo    '<p>
+                    $a = ”ManejadorSQL”;<br>
+                    $b = "MySQL";<br>
+                    $c = &$a;
+                </p>';
+
+        $a = "ManejadorSQL";
+        $b = 'MySQL';
+        $c = &$a;
+
+        echo '<p>a) Ahora muestra el contenido de cada variable</p>';
+        echo $a."<br>";
+        echo $b."<br>";
+        echo $c."<br>";
+
+        echo    '<p>b) Agrega al código actual las siguientes asignaciones</p>
+                <p>$a = “PHP server”<br>
+                    $b = &$a
+                </p>';
+
+        $a = "PHP server";
+        $b = &$a;
+
+        echo '<p>c) Vuelve a mostrar el contenido de cada uno</p>';
+        echo $a."<br>";
+        echo $b."<br>";
+
+        echo    '<p>
+                    d) Describe en y muestra en la página obtenida qué ocurrió en el segundo bloque de asignaciones</p>
+                    <p>$c = &$a; asigna $c como referencia de $a, lo que significa que ambos apuntan al mismo valor en memoria.<br>
+                    Al reasignar $a, tanto $a como $c cambian, porque comparten la referencia.<br>
+                    Después de asignar $b = &$a, $b también apunta al valor de $a.
+                /p>';
+
+        unset($a, $b, $c);
+        echo '<hr>';
+ 
     ?>
 
 </body>
