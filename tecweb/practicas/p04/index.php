@@ -133,6 +133,29 @@
         Ejercicio4();
         unset($a, $b, $c, $z);
         echo '<hr>';
+        //-------------------------------Ejercicio5---------------------------------
+        echo '<h2>Ejercicio 5</h2>';
+        echo '<p>Dar el valor de las variables $a, $b, $c al final del siguiente script:</p>';
+        echo    '<p>
+                    $a = “7 personas”;<br>
+                    $b = (integer) $a;<br>
+                    $a = “9E3”;<br>
+                    $c = (double) $a;
+                </p>';
+
+        $a = "7 personas";
+        echo $a.'<br>';
+
+        $b = (integer) $a;
+        echo $b.'<br>';
+
+        $a = "9E3";
+        echo $a.'<br>';
+
+        $c = (double) $a;
+        echo $c.'<br>';
+        echo '<hr>';
+        unset($a, $b, $c);
 
     ?>
 
