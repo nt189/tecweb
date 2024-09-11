@@ -195,7 +195,8 @@
         echo $_SERVER['SERVER_SOFTWARE'];
         
         echo '<p>b. El nombre del sistema operativo (servidor),</p>';
-        echo $_SERVER['SERVER_NAME'];
+        // echo $_SERVER['SERVER_NAME'];
+        echo PHP_OS;
 
         echo '<p>c. El idioma del navegador (cliente).</p>';
         echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
