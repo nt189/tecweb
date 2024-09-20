@@ -16,17 +16,20 @@
 
     function Ejercicio2(){
         $ite = 0;
+        $itecont = 1;
         $numr[$ite][0]=rand(0,1000);
         $numr[$ite][1]=rand(0,1000);
         $numr[$ite][2]=rand(0,1000);
+        echo '<p>'. $numr[$ite][0]. ', '.$numr[$ite][1]. ', '.$numr[$ite][2].'</p>';
         while ($numr[$ite][0] % 2 == 0 || $numr[$ite][1] % 2 != 0 || $numr[$ite][2] % 2 == 0) {
             $ite++;
             $numr[$ite][0] = rand(0, 1000);
             $numr[$ite][1] = rand(0, 1000);
             $numr[$ite][2] = rand(0, 1000);
+            $itecont++;
             echo '<p>'. $numr[$ite][0]. ', '.$numr[$ite][1]. ', '.$numr[$ite][2].'</p>';
         }
-        echo '<p>'.($ite*3). ' numeros obtenidos en '. $ite.' iteraciones</p>';
+        echo '<p>'.($itecont*3). ' numeros obtenidos en '. $itecont.' iteraciones</p>';
     }
 
 
