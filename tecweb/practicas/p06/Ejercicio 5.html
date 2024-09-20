@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ejercicio 5</h2>
+    <p>Usar las variables $edad y $sexo en una instrucción if para identificar una persona de <br>
+    sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de <br>
+    bienvenida apropiado. Por ejemplo: <br><br>
+    Bienvenida, usted está en el rango de edad permitido.
+    </p>
+    <fieldset>
+        <legend>Espesifica tu edad y genero</legend>
+        <form action="http://localhost:8080/index.php" method="post">
+            <fieldset>
+                <legend>Selecione se sexo</legend>
+                <label for="SEXO">Sexo:</label>
+                <input type="radio" name="Sexo" id="Sexo" value="Hombre">
+                <label for="Sexo">Hombre</label> 
+                <input type="radio" name="Sexo" id="Sexo" value="Mujer">
+                <label for="Sexo">Mujer</label><br>
+            </fieldset>
+            <fieldset>
+                <legend>Escriba su Edad</legend>
+                <label>Edad:</label>
+                <input type="number" name="Edad" id="Edad" min="0" max="120" required><br><br>
+            </fieldset>
+            <input type="submit">
+        </form>
+    </fieldset>
+    <br>
+</body>
+</html>
