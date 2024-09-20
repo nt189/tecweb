@@ -12,7 +12,7 @@
             }
         }
     }
-    Ejercicio1();
+
 
     function Ejercicio2(){
         $ite = 0;
@@ -28,7 +28,7 @@
         }
         echo '<p>'.($ite*3). ' numeros obtenidos en '. $ite.' iteraciones</p>';
     }
-    Ejercicio2();
+
 
     function Ejercicio3(){
         if(isset($_GET['numero1'])){
@@ -43,7 +43,7 @@
             echo "El número aleatorio es: ". $x;
         }
     }
-    Ejercicio3();
+
     
     function Ejercicio4(){
         $arreglo = array();
@@ -61,5 +61,4 @@
         }
         echo '</table>';
     }
-    Ejercicio4();
 ?>
