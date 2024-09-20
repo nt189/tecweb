@@ -18,14 +18,12 @@
     <p>Crea un programa para la generación repetitiva de 3 números aleatorios hasta obtener una <br>
         secuencia compuesta por:impar, par, impar</p>
     <?php 
-        include("src/Funciones.php");
         Ejercicio2();
     ?>
     <h2>Ejercicio 3</h2>
     <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,<br>
     pero que además sea múltiplo de un número dado.</p>
     <?php 
-        include("src/Funciones.php");
         Ejercicio3();
     ?>
 
@@ -35,7 +33,6 @@
     a la ‘z’. Usa la función chr(n) que devuelve el caracter cuyo código ASCII es n para poner <br>
     el valor en cada índice.</p>
     <?php
-        include("src/Funciones.php");
         Ejercicio4();
     ?>
 </body>

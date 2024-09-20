@@ -6,7 +6,7 @@
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
         <head>
             <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-            <title>Ejemplo de XHTML con PHP</title>
+            <title>Ejercicio 6</title>
         </head>
         <body>
             <h2>Ejercicio 5 Resultado</h2>
@@ -195,10 +195,10 @@
                 );
                 // echo '<br>'. count($registros);
 
-                if(isset($_POST["Matricula"])){
-                    $matricula_buscada = 'BLY3812'; // Matrícula que deseas filtrar
+                if(isset($_POST["Mboton"])){
+                    $matricula_buscada = $_POST["Matricula"]; // Matrícula que deseas filtrar
 
-                    if (isset($registros[$matricula_buscada])){
+                    if (!empty($registros[$matricula_buscada])){
                         $detalles = $registros[$matricula_buscada];
 
                         echo "

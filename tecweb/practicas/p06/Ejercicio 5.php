@@ -6,14 +6,14 @@
     <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
         <head>
             <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-            <title>Ejemplo de XHTML con PHP</title>
+            <title>Ejercicio 5</title>
         </head>
         <body>
             <h2>Ejercicio 5 Resultado</h2>
             <?php
                 if(isset($_POST["Sexo"]) && isset($_POST["Edad"]) && $_POST["Sexo"] == 'Mujer' && $_POST["Edad"] >= 18 && $_POST["Edad"] <= 35){
                     echo 'Bienvenida, usted está en el rango de edad permitido.';
-                    echo '<br>';
+                    echo '<br/>';
                 }
                 else{
                     echo 'Error al cargar...';
