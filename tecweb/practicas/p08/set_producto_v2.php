@@ -47,7 +47,7 @@ foreach($data as $dat){
 // echo 'resultado de val:'.$val;
 
 /** Crear una tabla que no devuelve un conjunto de resultados */
-$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, 'img/{$imagen}')";
+$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, 'img/{$imagen}', 0)";
 if (!$val){
     if( $link->query($sql) ){
         echo 'Producto insertado con ID: '.$link->insert_id;
@@ -86,6 +86,7 @@ $link->close();
 					<th scope="col">Unidades</th>
 					<th scope="col">Detalles</th>
 					<th scope="col">Imagen</th>
+					<th scope="col">eliminado</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -97,7 +98,8 @@ $link->close();
 						<td><?= $precio ?></td>
 						<td><?= $unidades ?></td>
 						<td><?= $detalles ?></td>
-						<td><img src=<?= $imagen ?> width="150" height="150"></td>
+						<td><img src=<?= 'img/'.$imagen ?> width="150" height="150"></td>
+						<td><?= 0 ?></td>
 					</tr>
 				</tbody>
 			</table>
