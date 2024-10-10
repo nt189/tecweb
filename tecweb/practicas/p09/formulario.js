@@ -13,8 +13,17 @@ function enrango(a, min, max){
         return true;
     }
     else{
-        val--;
+        return false;
     }
+}
+function borrador(){
+    document.getElementById('msnombre').innerHTML = '';
+    document.getElementById('msmarca').innerHTML = '';
+    document.getElementById('msmodelo').innerHTML = '';
+    document.getElementById('msprecio').innerHTML = '';
+    document.getElementById('msdetalles').innerHTML = '';
+    document.getElementById('msunidades').innerHTML = '';
+    document.getElementById('msimagen').innerHTML = '';
 }
 
 function validador(){
@@ -25,79 +34,85 @@ function validador(){
     var detalles = document.getElementById('detalles').value;
     var unidades = document.getElementById('unidades').value;
     var imagen = document.getElementById('imagen').value;
-    var val = 7;
+    var val = 5;
+
+    borrador();
     
     // El nombre debe ser requerido y tener 100 caracteres o menos.
     if(campvacio(nombre)){
-        alert('Por favor rellene el campo "Nombre del Producto"');
+        document.getElementById('msnombre').innerHTML = 'Por favor rellene el campo ';
         val--;
     }
     else if(!enrango(nombre, 1, 100)){
-        alert('El nombre tiene: ' + nombre.length + ' caracteres por favor ingrese como maximo 100');
+        document.getElementById('msnombre').innerHTML = 'El nombre tiene: ' + nombre.length + ' caracteres por favor ingrese como maximo 100';
         val--;
     }
 
     // La marca debe ser requerida y seleccionarse de una lista de opciones.
     const marcasPermitidas = ["Iphone", "Samsung", "Xiaomi", "Realme", "Motorola", "Poco"];
     if(campvacio(marca)){
-        alert('Por favor ingrese una marca valida: Iphone, Samsung, Xiaomi, Realme, Motorola, Poco"');
+        document.getElementById('msmarca').innerHTML = 'Por favor ingrese una marca valida: Iphone, Samsung, Xiaomi, Realme, Motorola, Poco';
         val--;
     }
-    else if(marcasPermitidas.includes(marca)){
-        alert('Por favor ingrese una marca valida: Iphone, Samsung, Xiaomi, Realme, Motorola, Poco"');
+    else if(!marcasPermitidas.includes(marca)){
+        document.getElementById('msmarca').innerHTML = 'Por favor ingrese una marca valida: Iphone, Samsung, Xiaomi, Realme, Motorola, Poco"';
         val--;
     }
 
     // El modelo debe ser requerido, texto alfanumérico y tener 25 caracteres o menos.
     var modeloRegex = /^[A-Za-z0-9]+$/;
     if(campvacio(modelo)){
-        alert('Por favor rellene el campo "Modelo"');
+        document.getElementById('msmodelo').innerHTML = 'Por favor rellene el campo';
         val--;
     }
     else if(!enrango(modelo, 1, 25)){
-        alert('El modelo tiene: ' + modelo.length + ' caracteres por favor ingrese como maximo 25');
+        document.getElementById('msmodelo').innerHTML = 'El modelo tiene: ' + modelo.length + ' caracteres por favor ingrese como maximo 25';
         val--;
     }
     else if(!modeloRegex.test(modelo)){
-        alert('El modelo debe ser alfanumerico');
+        document.getElementById('msmodelo').innerHTML = 'El modelo debe ser alfanumerico';
         val--;
     }
 
 
     // El precio debe ser requerido y debe ser mayor a 99.99.
     if(campvacio(precio)){
-        alert('Por favor rellene el campo "Precio"');
+        document.getElementById('msprecio').innerHTML = 'Por favor rellene el campo';
         val--;
     }
     else if(parseFloat(precio) <= 99.99){
-        alert('El precio es debe ser mayor a 99.99');
+        document.getElementById('msprecio').innerHTML = 'El precio es debe ser mayor a 99.99';
         val--;
     }
 
     // Los detalles deben ser opcionales y, de usarse, deben tener 250 caracteres o menos.
-    if(!enrango(detalles, 0, 250)){
-        alert('Los detalles tienen: ' + nombre.length + ' caracteres por favor ingrese como maximo 250');
+    if(detalles.length == 0){
+
+    }
+    else if(!enrango(detalles, 0, 250)){
+        document.getElementById('msdetalles').innerHTML = 'Los detalles tienen: ' + detalles.length + ' caracteres por favor ingrese como maximo 250';
         val--;
     }
 
     // Las unidades deben ser requeridas y el número registrado debe ser mayor o igual a O.
     if(campvacio(unidades)){
-        alert('Por favor rellene el campo "Unidades"');
+        document.getElementById('msunidades').innerHTML = 'Por favor rellene el campo';
         val--;
     }
-    else if(parseInt(unidades) >= 0){
-        alert('Por favor rellene el campo "Unidades"');
+    else if(parseInt(unidades) < 0){
+        document.getElementById('msunidades').innerHTML = 'Por favor rellene el campo';
         val--;
     }
-
+    
     // La ruta de la imagen debe ser opcional, pero en caso de no registrarse se debe usar la
     // ruta de una imagen por defecto. El siguiente es un ejemplo de una posible imagen por
     // defecto
     if(campvacio(imagen)){
-        document.getElementById('imagen').innerHTML = 'img/default.png'
-    }
+        document.getElementById('msimagen').innerHTML = 'Sea seleccionado la imagen default';
 
-    if(val != 7){
+    }
+    if(val != 5){
         event.preventDefault();
     }
+    
 }
