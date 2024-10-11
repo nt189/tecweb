@@ -54,6 +54,37 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Producto</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script>
+            function show() {
+                // se obtiene el id de la fila donde está el botón presinado
+                var rowId = event.target.parentNode.parentNode.id;
+
+                // se obtienen los datos de la fila en forma de arreglo
+                var data = document.getElementById(rowId).querySelectorAll(".row-data");
+                /**
+                querySelectorAll() devuelve una lista de elementos (NodeList) que 
+                coinciden con el grupo de selectores CSS indicados.
+                (ver: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
+
+                En este caso se obtienen todos los datos de la fila con el id encontrado
+                y que pertenecen a la clase "row-data".
+                */
+
+                // var id = data[0].innerHTML;
+				var nombre = 'nombre=' + data[1].innerHTML;
+				var marca = 'marca=' + data[2].innerHTML;
+				var modelo = 'modelo=' + data[3].innerHTML;
+				var precio = 'precio=' + data[4].innerHTML;
+				var unidades = 'unidades=' + data[5].innerHTML;
+				var detalles = 'detalles=' + data[6].innerHTML;
+				var imagen = 'imagen=' + (data[7].innerHTML).slice(10,-2);
+				
+
+				var urlForm = "http://localhost:8080/tecweb/practicas/p09/formulario_productos_v2.php";
+
+                window.open(urlForm+"?"+nombre+"&"+marca+"&"+modelo+"&"+precio+"&"+unidades+"&"+detalles+"&"+imagen)
+            }
+        </script>
 	</head>
 	<body>
 		<h3>PRODUCTO</h3>
@@ -72,23 +103,26 @@
 					<th scope="col">Unidades</th>
 					<th scope="col">Detalles</th>
 					<th scope="col">Imagen</th>
+					<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php foreach($row as $value) : ?>
-					<tr>
-						<th scope="row"><?= $value['id'] ?></th>
-						<td><?= $value['nombre'] ?></td>
-						<td><?= $value['marca'] ?></td>
-						<td><?= $value['modelo'] ?></td>
-						<td><?= $value['precio'] ?></td>
-						<td><?= $value['unidades'] ?></td>
-						<td><?= $value['detalles'] ?></td>
-						<td><img src=<?= $value['imagen'] ?> ></td>
+					<tr id="<?= $value['id']?>">
+						<th scope="row" class="row-data"><?= $value['id'] ?></th>
+						<td class="row-data"><?= $value['nombre'] ?></td>
+						<td class="row-data"><?= $value['marca'] ?></td>
+						<td class="row-data"><?= $value['modelo'] ?></td>
+						<td class="row-data"><?= $value['precio'] ?></td>
+						<td class="row-data"><?= $value['unidades'] ?></td>
+						<td class="row-data"><?= $value['detalles'] ?></td>
+						<td class="row-data"><img src=<?= $value['imagen'] ?> ></td>
+						<td><input type="button" onclick="show()" value="Modificar"></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			<script>
 		<?php elseif(!empty($id)) : ?>
 
 			 <script>
