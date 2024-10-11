@@ -116,7 +116,7 @@
 						<td class="row-data"><?= $value['precio'] ?></td>
 						<td class="row-data"><?= $value['unidades'] ?></td>
 						<td class="row-data"><?= $value['detalles'] ?></td>
-						<td class="row-data"><img src=<?= $value['imagen'] ?> ></td>
+						<td class="row-data"><img src=<?= $value['imagen'] ?> width="150" height="150"></td>
 						<td><input type="button" onclick="show()" value="Modificar"></td>
 					</tr>
 					<?php endforeach; ?>

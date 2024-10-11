@@ -77,7 +77,6 @@
 		<br/>
 		
 		<?php if( isset($row) ) : ?>
-
 			<table class="table">
 				<thead class="thead-dark">
 					<tr>
@@ -89,11 +88,12 @@
 					<th scope="col">Unidades</th>
 					<th scope="col">Detalles</th>
 					<th scope="col">Imagen</th>
+					<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
-                    <?php foreach ($row as $row){?>
-					<tr id="<?= $rwo['id']?>">
+					<?php foreach($row as $row) : ?>
+					<tr id="<?= $row['id']?>">
 						<th scope="row" class="row-data"><?= $row['id'] ?></th>
 						<td class="row-data"><?= $row['nombre'] ?></td>
 						<td class="row-data"><?= $row['marca'] ?></td>
@@ -101,13 +101,13 @@
 						<td class="row-data"><?= $row['precio'] ?></td>
 						<td class="row-data"><?= $row['unidades'] ?></td>
 						<td class="row-data"><?= $row['detalles'] ?></td>
-						<td class="row-data"><img src=<?= $row['imagen'] ?> ></td>
+						<td class="row-data"><img src=<?= $row['imagen'] ?> width="150" height="150"></td>
 						<td><input type="button" onclick="show()" value="Modificar"></td>
 					</tr>
-                    <?php }?>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
-
+			<script>
 		<?php elseif(!empty($id)) : ?>
 
 			 <script>
