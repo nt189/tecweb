@@ -62,7 +62,7 @@
 				var precio = 'precio=' + data[4].innerHTML;
 				var unidades = 'unidades=' + data[5].innerHTML;
 				var detalles = 'detalles=' + data[6].innerHTML;
-				var imagen = 'imagen=' + (data[7].innerHTML).slice(10,-2);
+				var imagen = 'imagen=' + (data[7].innerHTML).slice(10,-27);
 				
 
 				var urlForm = "http://localhost:8080/tecweb/practicas/p09/formulario_productos_v2.php";

@@ -70,7 +70,7 @@
                 y que pertenecen a la clase "row-data".
                 */
 
-                var id = 'id' + data[0].innerHTML;
+                var id = 'id=' + data[0].innerHTML;
 				var nombre = 'nombre=' + data[1].innerHTML;
 				var marca = 'marca=' + data[2].innerHTML;
 				var modelo = 'modelo=' + data[3].innerHTML;
