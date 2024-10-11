@@ -9,9 +9,9 @@
 <body>
     <h2>Formulario de Producto</h2>
     <fieldset>
-        <legend>Datos del producto</legend>
+        <legend>Actualizar datos del producto</legend>
         <p>Los campos marcados con un * son obligatorios</p>
-        <form id="formularioTenis" method="post">
+        <form id="formularioTenis" action="http://localhost:8080/tecweb/practicas/p09/update_producto.php?id=<?= $_GET['id']?>" method="post">
             <fieldset>
                 <label for="nombre">Nombre del Producto*: </label><span style="color: red;" id="msnombre"></span><br>
                 <input type="text" id="nombre" name="nombre" value="<?= $_GET['nombre']?>">

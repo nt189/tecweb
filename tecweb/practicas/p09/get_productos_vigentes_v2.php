@@ -55,7 +55,7 @@
                 y que pertenecen a la clase "row-data".
                 */
 
-                // var id = data[0].innerHTML;
+                var id = 'id=' + data[0].innerHTML;
 				var nombre = 'nombre=' + data[1].innerHTML;
 				var marca = 'marca=' + data[2].innerHTML;
 				var modelo = 'modelo=' + data[3].innerHTML;
@@ -67,7 +67,7 @@
 
 				var urlForm = "http://localhost:8080/tecweb/practicas/p09/formulario_productos_v2.php";
 
-                window.open(urlForm+"?"+nombre+"&"+marca+"&"+modelo+"&"+precio+"&"+unidades+"&"+detalles+"&"+imagen)
+                window.open(urlForm+"?"+nombre+"&"+marca+"&"+modelo+"&"+precio+"&"+unidades+"&"+detalles+"&"+imagen+"&"+id)
             }
         </script>
 	</head>

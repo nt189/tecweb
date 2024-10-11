@@ -109,10 +109,17 @@ function validador(){
     // defecto
     if(campvacio(imagen)){
         document.getElementById('msimagen').innerHTML = 'Sea seleccionado la imagen default';
+        document.getElementById('imagen').remove();
+        var def = document.createElement("span");
+    def.setAttribute("value", 'img/default.jpg');
+    def.setAttribute("id", 'imagen');
+    document.getElementById('msimagen').appendChild(def);
 
     }
     if(val != 5){
         event.preventDefault();
     }
+    
+    event.preventDefault();
     
 }

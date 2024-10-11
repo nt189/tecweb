@@ -84,7 +84,7 @@
 						<td><?= $value['precio'] ?></td>
 						<td><?= $value['unidades'] ?></td>
 						<td><?= $value['detalles'] ?></td>
-						<td><img src=<?= $value['imagen'] ?> ></td>
+						<td><img src=<?= $value['imagen'] ?> width="150" height="150"></td>
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
