@@ -120,3 +120,65 @@ function init() {
     var JsonString = JSON.stringify(baseJSON,null,2);
     document.getElementById("description").value = JsonString;
 }
+
+// FUNCIÓN CALLBACK DE BOTÓN "Buscar Producto"
+function buscarProducto(e) {
+    e.preventDefault(); // Evita el comportamiento predeterminado del formulario
+
+    // Obtiene el término de búsqueda
+    var id = document.getElementById('search').value;
+
+    // Verifica que el término no esté vacío
+    if (!id) {
+        console.error('El término de búsqueda no puede estar vacío');
+        return;
+    }
+
+    // Crea el objeto de conexión asíncrona al servidor
+    var client = getXMLHttpRequest();
+    client.open('POST', './backend/read.php', true);
+    client.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    client.onreadystatechange = function () {
+        if (client.readyState == 4) {
+            if (client.status == 200) {
+                console.log('[CLIENTE]\n' + client.responseText);
+                // Procesa la respuesta
+                let productos = JSON.parse(client.responseText);
+                
+                // Verifica si hay productos y los muestra
+                if (productos.length > 0) {
+                    let template = '';
+                    productos.forEach(producto => {
+                        let descripcion = `
+                            <ul>
+                                <li>Precio: ${producto.precio}</li>
+                                <li>Unidades: ${producto.unidades}</li>
+                                <li>Modelo: ${producto.modelo}</li>
+                                <li>Marca: ${producto.marca}</li>
+                                <li>Detalles: ${producto.detalles}</li>
+                            </ul>
+                        `;
+
+                        template += `
+                            <tr>
+                                <td>${producto.id}</td>
+                                <td>${producto.nombre}</td>
+                                <td>${descripcion}</td>
+                            </tr>
+                        `;
+                    });
+                    // Inserta la plantilla en el elemento con ID "productos"
+                    document.getElementById("productos").innerHTML = template;
+                } else {
+                    console.log('No se encontraron productos.');
+                }
+            } else {
+                console.error('Error en la solicitud: ', client.status, client.statusText);
+            }
+        }
+    };
+
+    // Envía el término de búsqueda al servidor
+    client.send("id=" + encodeURIComponent(id));
+}
