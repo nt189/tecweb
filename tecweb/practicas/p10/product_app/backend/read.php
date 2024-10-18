@@ -4,8 +4,8 @@
     // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
     $data = array();
     // SE VERIFICA HABER RECIBIDO EL ID
-    if( isset($_POST['id']) ) {
-        $id = $_POST['id'];
+    if( isset($_GET['id']) ) {
+        $id = $_GET['id'];
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
         if ( $result = $conexion->query("SELECT * FROM productos WHERE nombre LIKE '%{$id}%' OR marca LIKE '%{$id}%' OR detalles LIKE '%{$id}%'") ) {
             // SE OBTIENEN LOS RESULTADOS
@@ -15,7 +15,7 @@
                     $data[$key] = utf8_encode($value);
                 }
                 // Agrega el producto al arreglo de datos
-                $products[] = $data;
+                $productos[] = $data;
             }
 			$result->free();
 		} else {
@@ -25,5 +25,5 @@
     } 
     
     // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-    echo json_encode($data, JSON_PRETTY_PRINT);
+    echo json_encode($productos, JSON_PRETTY_PRINT);
 ?>
