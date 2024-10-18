@@ -28,11 +28,16 @@
             <textarea id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea>
           </div>
           <input type="hidden" id="taskId">
-          <button type="submit" onclick="buscarProducto(event)" >
+          <button type="submit" onclick="agregarProducto(event)" >
             Agregar Producto
           </button>
         </form>
       </div>
+
+      <form>
+        <input name="search" id="buscar" type="search" placeholder="buscar por parte del: nombre, marca o producto">
+        <button type="submit" onclick="buscarProducto(event)">Buscar</button>
+      </form>
 
       <!-- TABLA  -->
       <div>
