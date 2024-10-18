@@ -133,8 +133,10 @@ function agregarProducto(e) {
         client.onreadystatechange = function () {
             // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
             if (client.readyState == 4 && client.status == 200) {
-                console.log(client.responseText);
+                console.log(client.responseText)
             }
+            var mensaje = client.responseText;
+            window.alert(mensaje);
         };
         client.send(productoJsonString);
     }
