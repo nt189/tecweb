@@ -182,7 +182,7 @@ function buscarProducto(e) {
     e.preventDefault(); // Evita el comportamiento predeterminado del formulario
 
     // Obtiene el término de búsqueda
-    var id = document.getElementById('buscar').value;
+    var id = document.getElementById('search').value;
 
     // Verifica que el término no esté vacío
     if (!id) {
