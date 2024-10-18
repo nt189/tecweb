@@ -2,10 +2,10 @@
     $conexion = @mysqli_connect(
         'localhost',
         'root',
-        '12345678a',
+        'zP*liGgdxEbBXjyk',
         'marketzone'
     );
-
+    
     /**
      * NOTA: si la conexión falló $conexion contendrá false
      **/
