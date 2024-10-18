@@ -60,6 +60,58 @@ function buscarID(e) {
     client.send("id="+id);
 }
 
+//Validador
+function Validado(producto){
+    var nombre = producto.nombre;
+    var marca = producto.marca;
+    var modelo = producto.modelo;
+    var precio = parseFloat(producto.precio);
+    var detalles = producto.detalles;
+    var unidades = parseInt(producto.unidades);
+    var imagen = producto.imagen;
+
+    // El nombre debe ser requerido y tener 100 caracteres o menos.
+    if (!nombre || nombre.length > 100) {
+        alert("El nombre es requerido y debe tener 100 caracteres o menos.");
+        return false;
+    }
+
+    // La marca debe ser requerida y seleccionarse de una lista de opciones.
+    if (marca == 'NA') {
+        alert("La marca es requerida y debe seleccionarse de una lista de opciones.");
+        return false;
+    }
+
+    // El modelo debe ser requerido, texto alfanumérico y tener 25 caracteres o menos.
+    if (modelo == 'XX-000' || modelo.length > 25 || !/^[a-zA-Z0-9]+$/.test(modelo)) {
+        alert("El modelo es requerido, debe ser alfanumérico y tener 25 caracteres o menos.");
+        return false;
+    }
+
+    // El precio debe ser requerido y debe ser mayor a 99.99.
+    if (precio == 0 || precio <= 99.99) {
+        alert("El precio es requerido y debe ser mayor a 99.99.");
+        return false;
+    }
+
+    // Los detalles deben ser opcionales y, de usarse, deben tener 250 caracteres o menos.
+    if (detalles.length > 250) {
+        alert("Los detalles, si se proporcionan, deben tener 250 caracteres o menos.");
+        return false;
+    }
+
+    // Las unidades deben ser requeridas y el número registrado debe ser mayor o igual a O.
+    if (isNaN(unidades) || unidades < 0) {
+        alert("Las unidades son requeridas y deben ser mayor o igual a 0.");
+        return false;
+    }
+
+    // La ruta de la imagen debe ser opcional, pero en caso de no registrarse se debe usar la
+    // ruta de una imagen por defecto. El siguiente es un ejemplo de una posible imagen por
+    // defecto
+    return true;
+}
+
 // FUNCIÓN CALLBACK DE BOTÓN "Agregar Producto"
 function agregarProducto(e) {
     e.preventDefault();
@@ -73,17 +125,19 @@ function agregarProducto(e) {
     // SE OBTIENE EL STRING DEL JSON FINAL
     productoJsonString = JSON.stringify(finalJSON,null,2);
 
-    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
-    var client = getXMLHttpRequest();
-    client.open('POST', './backend/create.php', true);
-    client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
-    client.onreadystatechange = function () {
-        // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
-        if (client.readyState == 4 && client.status == 200) {
-            console.log(client.responseText);
-        }
-    };
-    client.send(productoJsonString);
+    if(Validado(JSON.parse(productoJsonString))){
+        // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+        var client = getXMLHttpRequest();
+        client.open('POST', './backend/create.php', true);
+        client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
+        client.onreadystatechange = function () {
+            // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+            if (client.readyState == 4 && client.status == 200) {
+                console.log(client.responseText);
+            }
+        };
+        client.send(productoJsonString);
+    }
 }
 
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
