@@ -16,6 +16,9 @@ function init() {
     var JsonString = JSON.stringify(baseJSON,null,2);
     document.getElementById("description").value = JsonString;
 
+    console.log($('#productId').val());
+    $('#productId').removeAttr('value');
+
     // SE LISTAN TODOS LOS PRODUCTOS
     // listarProductos();
 }
