@@ -74,7 +74,7 @@ $(document).ready(function() {
                         <td>${product.nombre}</td>
                         <td><ul>${descripcion}</ul></td>
                         <td>
-                            <button class="product-delete btn btn-danger" onclick="eliminarProducto()">
+                            <button class="product-delete btn btn-danger">
                                 Eliminar
                             </button>
                         </td>
@@ -111,6 +111,30 @@ $(document).ready(function() {
                 $('#container').html(template);
             }
         });
+        fetchproducts()
         e.preventDefault();
+    });
+
+    // Elimiar producto
+    $(document).on('click', '.product-delete', (e) => {
+        if(confirm('De verdad deseas eliinar el Producto')) {
+          const element = $(this)[0].activeElement.parentElement.parentElement;
+          const id = $(element).attr('productId');
+          $.post('backend/product-delete.php', {id}, (response) => {
+            fetchproducts();
+            console.log(response)
+
+            if(!response.error) {
+                let result = JSON.parse(response);
+                let template = `
+                        <li style="list-style: none;">status: ${result.status}</li>
+                        <li style="list-style: none;">message: ${result.message}</li>
+                    `;
+
+                $('#product-result').show();
+                $('#container').html(template);
+            }
+          });
+        }
     });
 });
