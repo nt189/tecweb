@@ -110,21 +110,18 @@ $(document).ready(function() {
             const url = edit === false ? 'backend/product-add.php' : 'backend/product-edit.php';
             // console.log(postData, url);
             $.post(url, JSON.stringify(postData), (response) => {
-                // console.log(response);
+                console.log(response);
 
                 if(!response.error) {
                     let result = JSON.parse(response);
-                    console.log(result)
+                    // console.log(result.status)
                     let template = `
                             <li style="list-style: none;">status: ${result.status}</li>
                             <li style="list-style: none;">message: ${result.message}</li>
                         `;
-    
                     $('#product-result').show();
                     $('#container').html(template);
                 }
-
-                // $('#product-form').trigger('reset');
                 init();
                 fetchproducts();
             });
@@ -162,13 +159,13 @@ $(document).ready(function() {
                 $('#name').val(product[0].nombre);
 
                 let template = `{
-    "precio": ${product[0].precio},
-    "unidades": ${product[0].unidades},
-    "modelo": "${product[0].modelo}",
-    "marca": "${product[0].marca}",
-    "detalles": "${product[0].detalles}",
-    "imagen": "${product[0].imagen}"
-    }`; 
+"precio": ${product[0].precio},
+"unidades": ${product[0].unidades},
+"modelo": "${product[0].modelo}",
+"marca": "${product[0].marca}",
+"detalles": "${product[0].detalles}",
+"imagen": "${product[0].imagen}"
+}`; 
 
                 $('#description').val(template);
                 $('#productId').val(product[0].id);

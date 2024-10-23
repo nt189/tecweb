@@ -2,18 +2,25 @@
 
   include('database.php');
 
-  if(isset($_POST['id'])) {
-    $product_name = $_POST['name']; 
-    $product_description = $_POST['description'];
-    $id = $_POST['id'];
-    $query = "UPDATE product SET name = '$product_name', description = '$product_description' WHERE id = '$id'";
-    $result = mysqli_query($connection, $query);
+// SE OBTIENE LA INFORMACIÓN DEL PRODUCTO ENVIADA POR EL CLIENTE
+$producto = file_get_contents('php://input');
+$data = array(
+    'status'  => 'error',
+    'message' => ''
+);
+  if(!empty($producto)) {
+    $jsonOBJ = json_decode($producto);
+    
+    $sql = "UPDATE `productos` SET `nombre`='{$jsonOBJ->nombre}',`marca`='{$jsonOBJ->marca}',`modelo`='{$jsonOBJ->modelo}',`precio`='{$jsonOBJ->precio}',`detalles`='{$jsonOBJ->detalles}',`unidades`='{$jsonOBJ->unidades}',`imagen`='{$jsonOBJ->imagen}' WHERE `id`='{$jsonOBJ->id}'";
+    $result = mysqli_query($conexion, $sql);
 
-    if (!$result) {
-      die('Query Failed.');
+    if ($result) {
+      $data['status'] =  "success";
+      $data['message'] =  "Se ha actualizado el producto";
+    }else {
+      $data['message'] = "ERROR: No pudo actualizar le producto con el id: $jsonOBJ->id;";
     }
-    echo "Producto Acutalizado";  
-
+    echo json_encode($data, JSON_PRETTY_PRINT);  
   }
 
 ?>
