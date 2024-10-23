@@ -86,5 +86,31 @@ $(document).ready(function() {
         });
     }
 
-   
+    // Agregar productos
+    $('#product-form').submit(function (e) {
+        // SE OBTIENE DESDE EL FORMULARIO EL JSON A ENVIAR
+        var productoJsonString = document.getElementById('description').value;
+        // SE CONVIERTE EL JSON DE STRING A OBJETO
+        var finalJSON = JSON.parse(productoJsonString);
+        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
+        finalJSON['nombre'] = document.getElementById('name').value;
+        // SE OBTIENE EL STRING DEL JSON FINAL
+        productoJsonString = JSON.stringify(finalJSON,null,2);
+
+        $.post('backend/product-add.php', productoJsonString, function (response) {
+            console.log(response);
+            
+            if(!response.error) {
+                let result = JSON.parse(response);
+                let template = `
+                        <li style="list-style: none;">status: ${result.status}</li>
+                        <li style="list-style: none;">message: ${result.message}</li>
+                    `;
+
+                $('#product-result').show();
+                $('#container').html(template);
+            }
+        });
+        e.preventDefault();
+    });
 });
