@@ -110,7 +110,7 @@
                     // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
                     foreach($rows as $num => $row) {
                         foreach($row as $key => $value) {
-                            $data[$num][$key] = utf8_encode($value);
+                            $data[$num][$key] = ($value);
                         }
                     }
                 }
@@ -140,7 +140,7 @@
                         // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
                         foreach($rows as $num => $row) {
                             foreach($row as $key => $value) {
-                                $data[$num][$key] = utf8_encode($value);
+                                $data[$num][$key] = ($value);
                             }
                         }
                     }
@@ -169,7 +169,7 @@
                     if(!is_null($row)) {
                         // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
                         foreach($row as $key => $value) {
-                            $data[$key] = utf8_encode($value);
+                            $data[$key] = ($value);
                         }
                     }
                     $result->free();
@@ -197,7 +197,7 @@
                     if(!is_null($row)) {
                         // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
                         foreach($row as $key => $value) {
-                            $data[$key] = utf8_encode($value);
+                            $data[$key] = ($value);
                         }
                     }
                     $result->free();
