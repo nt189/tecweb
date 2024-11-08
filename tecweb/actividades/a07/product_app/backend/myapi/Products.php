@@ -13,7 +13,7 @@
             parent::__construct($user, $pass, $db);
         }
 
-        public function add(){
+        public function add($jsonOBJ = NULL){
             // SE OBTIENE LA INFORMACIÓN DEL PRODUCTO ENVIADA POR EL CLIENTE
             $data = array(
                 'status'  => 'error',
@@ -43,10 +43,10 @@
             }
         
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
-        public function delete(){
+        public function delete($id = NULL){
             // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
             $data = array(
                 'status'  => 'error',
@@ -67,10 +67,10 @@
             } 
             
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
-        public function edit(){
+        public function edit($jsonOBJ = NULL){
             // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
             $data = array(
                 'status'  => 'error',
@@ -94,7 +94,7 @@
             } 
             
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
         public function list(){
@@ -121,10 +121,10 @@
             $this->conexion->close();
             
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
-        public function search(){
+        public function search($search = NULL){
             // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
             $data = array();
             // SE VERIFICA HABER RECIBIDO EL ID
@@ -152,10 +152,10 @@
             } 
             
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
-        public function single(){
+        public function single($id = NULL){
             // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
             $data = array();
         
@@ -180,10 +180,10 @@
             }
         
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
-        public function singleByName(){
+        public function singleByName($name = NULL){
             // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
             $data = array();
         
@@ -208,11 +208,11 @@
             }
         
             // SE HACE LA CONVERSIÓN DE ARRAY A JSON
-            echo json_encode($data, JSON_PRETTY_PRINT);
+            $this->data = $data;
         }
 
         public function getData(){
-            // echo $data[];
+            echo json_encode($this->data, JSON_PRETTY_PRINT);
         }
 
     }
