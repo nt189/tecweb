@@ -1,18 +1,36 @@
 // JSON BASE A MOSTRAR EN FORMULARIO
-var baseJSON = {
-    "precio": 0.0,
-    "unidades": 1,
-    "modelo": "XX-000",
-    "marca": "NA",
-    "detalles": "NA",
-    "imagen": "img/default.png"
-  };
+function jsonproducto(){
+    if(validador()){
+        var baseJSON = {
+            "nombre": document.getElementById('nombre').value,
+            "precio": document.getElementById('precio').value,
+            "unidades": document.getElementById('unidades').value,
+            "modelo": document.getElementById('modelo').value,
+            "marca": document.getElementById('marca').value,
+            "detalles": document.getAnimations('detalles').value,
+            "imagen": document.getElementById('imagen').value
+        };
+
+        if(!baseJSON.imagen){
+            baseJSON.imagen = 'img/Default.png'
+            console.log('Se ha seleccionado la imagen default');
+            console.log(baseJSON.imagen);
+        }
+        else{
+            baseJSON.imagen = 'img/'+document.getElementById('imagen').value;
+        }
+
+        if(baseJSON.detalles == undefined){
+            baseJSON.detalles = "";
+        }
+    }
+
+    return baseJSON;
+}
 
 $(document).ready(function(){
     let edit = false;
 
-    let JsonString = JSON.stringify(baseJSON,null,2);
-    $('#description').val(JsonString);
     $('#product-result').hide();
     listarProductos();
 
@@ -122,20 +140,15 @@ $(document).ready(function(){
         e.preventDefault();
 
         // SE CONVIERTE EL JSON DE STRING A OBJETO
-        let postData = JSON.parse( $('#description').val() );
-        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-        postData['nombre'] = $('#name').val();
+        let postData = jsonproducto();
+        console.log(postData)
         postData['id'] = $('#productId').val();
 
-        /**
-         * AQUÍ DEBES AGREGAR LAS VALIDACIONES DE LOS DATOS EN EL JSON
-         * --> EN CASO DE NO HABER ERRORES, SE ENVIAR EL PRODUCTO A AGREGAR
-         **/
 
         const url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
         
         $.post(url, postData, (response) => {
-            //console.log(response);
+            console.log(response);
             // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
             let respuesta = JSON.parse(response);
             // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
@@ -145,8 +158,7 @@ $(document).ready(function(){
                         <li style="list-style: none;">message: ${respuesta.message}</li>
                     `;
             // SE REINICIA EL FORMULARIO
-            $('#name').val('');
-            $('#description').val(JsonString);
+            
             // SE HACE VISIBLE LA BARRA DE ESTADO
             $('#product-result').show();
             // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
