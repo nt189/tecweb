@@ -13,8 +13,6 @@ function jsonproducto(){
 
         if(!baseJSON.imagen){
             baseJSON.imagen = 'img/Default.png'
-            console.log('Se ha seleccionado la imagen default');
-            console.log(baseJSON.imagen);
         }
         else{
             baseJSON.imagen = 'img/'+document.getElementById('imagen').value;
