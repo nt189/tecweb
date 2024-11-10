@@ -183,6 +183,7 @@ $(document).ready(function(){
     $(document).on('click', '.product-item', (e) => {
         const element = $(this)[0].activeElement.parentElement.parentElement;
         const id = $(element).attr('productId');
+        document.getElementById('msnombre').style.display = 'none';
         $.post('./backend/product-single.php', {id}, (response) => {
             // SE CONVIERTE A OBJETO EL JSON OBTENIDO
             let product = JSON.parse(response);
@@ -209,5 +210,32 @@ $(document).ready(function(){
             edit = true;
         });
         e.preventDefault();
-    });    
+    }); 
+    
+    $('#nombre').on('input', function() {
+        const nombre = $(this).val();
+        
+        if (nombre.length > 0) {
+            $.ajax({
+                url: 'backend/product-singleByName.php', // Reemplaza con la ruta correcta
+                type: 'POST',
+                data: { nombre: nombre },
+                dataType: 'json',
+                success: function(data) {
+                    const msNombre = $('#msnombre');
+                    if (data.exists) {
+                        msNombre.text('El nombre del producto ya existe.');
+                    } else {
+                        msNombre.text('Nombre disponible.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        } else {
+            $('#msnombre').text('');
+        }
+        document.getElementById('msnombre').style.display = 'inline';
+    });
 });
