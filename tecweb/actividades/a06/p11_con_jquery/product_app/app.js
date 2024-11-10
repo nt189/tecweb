@@ -7,7 +7,7 @@ function jsonproducto(){
             "unidades": document.getElementById('unidades').value,
             "modelo": document.getElementById('modelo').value,
             "marca": document.getElementById('marca').value,
-            "detalles": document.getAnimations('detalles').value,
+            "detalles": document.getElementById('detalles').value,
             "imagen": document.getElementById('imagen').value
         };
 
@@ -163,6 +163,7 @@ $(document).ready(function(){
             $('#container').html(template_bar);
             // SE LISTAN TODOS LOS PRODUCTOS
             listarProductos();
+            $('#productId').val('');
             // SE REGRESA LA BANDERA DE EDICIÓN A false
             edit = false;
         });
@@ -186,17 +187,23 @@ $(document).ready(function(){
             // SE CONVIERTE A OBJETO EL JSON OBTENIDO
             let product = JSON.parse(response);
             // SE INSERTAN LOS DATOS ESPECIALES EN LOS CAMPOS CORRESPONDIENTES
-            $('#name').val(product.nombre);
+            $('#nombre').val(product.nombre);
             // EL ID SE INSERTA EN UN CAMPO OCULTO PARA USARLO DESPUÉS PARA LA ACTUALIZACIÓN
             $('#productId').val(product.id);
             // SE ELIMINA nombre, eliminado E id PARA PODER MOSTRAR EL JSON EN EL <textarea>
             delete(product.nombre);
             delete(product.eliminado);
             delete(product.id);
+
             // SE CONVIERTE EL OBJETO JSON EN STRING
-            let JsonString = JSON.stringify(product,null,2);
-            // SE MUESTRA STRING EN EL <textarea>
-            $('#description').val(JsonString);
+            $('#nombre').html(product.nombre);
+            $('#marca').val(product.marca);
+            $('#modelo').val(product.modelo);
+            $('#precio').val(product.precio);
+            $('#detalles').val(product.detalles);
+            $('#unidades').val(product.unidades);
+            $('#msimagen').html(product.imagen);
+            document.getElementById('msimagen').style.display = 'inline';
             
             // SE PONE LA BANDERA DE EDICIÓN EN true
             edit = true;
