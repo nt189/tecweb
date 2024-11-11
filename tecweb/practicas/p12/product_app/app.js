@@ -164,8 +164,19 @@ $(document).ready(function(){
             const element = $(this)[0].activeElement.parentElement.parentElement;
             const id = $(element).attr('productId');
             $.post('./backend/product-delete.php', {id}, (response) => {
-                $('#product-result').hide();
+                // $('#product-result').hide();
                 listarProductos();
+
+                if(!response.error) {
+                    let result = JSON.parse(response);
+                    let template = `
+                            <li style="list-style: none;">status: ${result.status}</li>
+                            <li style="list-style: none;">message: ${result.message}</li>
+                        `;
+
+                    $('#product-result').show();
+                    $('#container').html(template);
+                }
             });
         }
     });
