@@ -8,7 +8,6 @@ class Read extends DataBase {
 
 
     public function __construct($db, $user='root', $pass='zP*liGgdxEbBXjyk') {
-        $this->data = array();
         parent::__construct($db, $user, $pass);
     }
 
