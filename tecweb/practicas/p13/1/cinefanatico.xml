@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+
+<cinefanatico>
+    <tarjeta noserie="123456" visitas="5" puntos="150" >
+        <nombre>Pedro Pascal</nombre>
+        <correo>pascalp@correo.com</correo>
+        <telefono tipo="movil">1234567890</telefono>
+        <telefono tipo="casa">0987654321</telefono>
+    </tarjeta>
+</cinefanatico>
